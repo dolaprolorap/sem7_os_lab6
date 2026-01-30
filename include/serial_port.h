@@ -1,9 +1,7 @@
 #ifndef SERIAL_H
 #define SERIAL_H
 
-#include <pthread.h>
-
 void start_serial(void);
-double read_serial();
+double read_serial(void);
 
 #endif // SERIAL_H

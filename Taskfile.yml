@@ -4,3 +4,6 @@ tasks:
   build-linux:
     cmds:
       - cmake . -B build && make -C build && ./build/lab4
+  build-windows:
+    cmds:
+      - cmake . -B build -G "MinGW Makefiles" && cmake --build build && ./build/lab4 

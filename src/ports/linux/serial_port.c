@@ -7,6 +7,7 @@
 #include <termios.h>
 #include <stdbool.h>
 #include "serial_port.h"
+#include <pthread.h>
 
 #define DAY_DURATION 10
 #define PI 3.141592653589793

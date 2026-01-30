@@ -5,8 +5,8 @@ set(INCLUDES include)
 
 if(WIN32)
     set(WIN_SOURCE
-        src/logger.c
         src/main.c
+        src/ports/win/logger.c
         src/ports/win/serial_port.c
         src/ports/win/utils.c
     )
@@ -20,8 +20,8 @@ if(WIN32)
     target_link_libraries(lab4 PRIVATE ${EXTRA_LIBS})
 else()
     set(LINUX_SOURCE
-        src/logger.c
         src/main.c
+        src/ports/linux/logger.c
         src/ports/linux/serial_port.c
         src/ports/linux/utils.c
     )
