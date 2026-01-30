@@ -78,7 +78,15 @@ void send_data(int client_fd, char *buffer)
     char response[2200];
     size_t response_len = sprintf(response, response_template, json_len, json);
 
-    write(client_fd, response, response_len);
+    int total = 0;
+    int to_send = (int)response_len;
+    
+    while (total < to_send)
+    {
+        int sent = send(client_fd, response + total, response_len - total, 0);
+        
+        total += sent;
+    }
 }
 
 DWORD WINAPI start_server_handler(LPVOID arg)
@@ -160,8 +168,6 @@ DWORD WINAPI start_server_handler(LPVOID arg)
     
     while (1)
     {
-        printf("123\n");
-
         client_fd = accept(server_fd, &address, &addrlen);
 
         if (client_fd == INVALID_SOCKET)
