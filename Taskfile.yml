@@ -1,9 +1,0 @@
-version: '3.41'
-
-tasks:
-  build-linux:
-    cmds:
-      - cmake . -B build && make -C build && ./build/lab5
-  build-windows:
-    cmds:
-      - cmake . -B build -G "MinGW Makefiles" && cmake --build build && ./build/lab5

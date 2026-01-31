@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(lab5)
+project(lab6)
 
 set(INCLUDES include)
 
@@ -19,9 +19,9 @@ if(WIN32)
         ws2_32
     )
 
-    add_executable(lab5 ${WIN_SOURCE})
+    add_executable(lab6 ${WIN_SOURCE})
 
-    target_link_libraries(lab5 PRIVATE ${EXTRA_LIBS})
+    target_link_libraries(lab6 PRIVATE ${EXTRA_LIBS})
 else()
     set(LINUX_SOURCE
         src/main.c
@@ -33,11 +33,11 @@ else()
         src/repository.c
     )
 
-    add_executable(lab5 ${LINUX_SOURCE})
+    add_executable(lab6 ${LINUX_SOURCE})
 endif()
 
-target_include_directories(lab5 PRIVATE ${INCLUDES})
+target_include_directories(lab6 PRIVATE ${INCLUDES})
 
-target_link_libraries(lab5 PRIVATE m)
+target_link_libraries(lab6 PRIVATE m)
 
-target_compile_options(lab5 PRIVATE -std=c11)
+target_compile_options(lab6 PRIVATE -std=c11)
