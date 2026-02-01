@@ -12,11 +12,9 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
-#ifndef _WIN32
 #include <qwt_plot.h>
 #include <qwt_plot_curve.h>
 #include <qwt_text.h>
-#endif
 
 int main(int argc, char *argv[])
 {
@@ -50,7 +48,6 @@ int main(int argc, char *argv[])
     endContainer->addWidget(endLabel);
     endContainer->addWidget(endDate);
 
-#ifndef _WIN32
     QwtPlot plot;
     plot.setTitle("Дневная температура");
     plot.setAxisTitle(QwtPlot::xBottom, "Отсчёты");
@@ -61,7 +58,6 @@ int main(int argc, char *argv[])
     curve.attach(&plot);
 
     layout->addWidget(&plot);
-#endif
 
     layout->addLayout(startContainer);
     layout->addLayout(endContainer);
@@ -120,10 +116,8 @@ int main(int argc, char *argv[])
             y_new.push_back(json.array()[i].toDouble());
         }
 
-#ifndef _WIN32
         curve.setSamples(x_new.data(), y_new.data(), y_new.size());
         plot.replot();
-#endif
     });
     timer.start(1000);
 
