@@ -8,7 +8,12 @@
                 "/usr/include/x86_64-linux-gnu/qt5",
                 "/usr/include/x86_64-linux-gnu/qt5/QtCore",
                 "/usr/include/x86_64-linux-gnu/qt5/QtGui",
-                "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
+                "/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+            
+                "C:\\Program Files\\Qt6\\include",
+                "C:\\Program Files\\Qt6\\include\\QtCore",
+                "C:\\Program Files\\Qt6\\include\\QtGui",
+                "C:\\Program Files\\Qt6\\include\\QtWidgets"
             ],
             "defines": [
             ],

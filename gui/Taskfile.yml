@@ -6,4 +6,4 @@ tasks:
       - cmake . -B build && make -C build && ./build/lab6
   build-windows:
     cmds:
-      - cmake . -B build -G "MinGW Makefiles" && cmake --build build && ./build/lab6
+      - cmake . -B build -G "NMake Makefiles" && cmake --build build && ./build/lab6

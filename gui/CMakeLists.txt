@@ -11,12 +11,19 @@ if(WIN32)
         src/main.cpp
     )
 
+    find_package(Qt6 6.12.0 REQUIRED COMPONENTS Widgets)
+    find_package(Qt6 6.12.0 REQUIRED COMPONENTS Network)
+
     set(EXTRA_LIBS
         kernel32
     )
 
     add_executable(lab6 ${WIN_SOURCE})
 
+    target_link_libraries(lab6 
+        PRIVATE Qt6::Widgets
+        PRIVATE Qt6::Network
+    )
     target_link_libraries(lab6 PRIVATE ${EXTRA_LIBS})
 
     target_include_directories(lab6 PRIVATE ${INCLUDES})

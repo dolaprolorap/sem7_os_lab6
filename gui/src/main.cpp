@@ -1,9 +1,6 @@
 #include <QApplication>
-#include <qwt_plot.h>
-#include <qwt_plot_curve.h>
 #include <QVector>
 #include <QTimer>
-#include <qwt_text.h>
 #include <cstdlib>
 #include <QUrl>
 #include <QtNetwork/QNetworkAccessManager>
@@ -15,21 +12,18 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
+#ifndef _WIN32
+#include <qwt_plot.h>
+#include <qwt_plot_curve.h>
+#include <qwt_text.h>
+#endif
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
     QWidget window;
     QVBoxLayout *layout = new QVBoxLayout(&window);
-
-    QwtPlot plot;
-    plot.setTitle("Дневная температура");
-    plot.setAxisTitle(QwtPlot::xBottom, "Отсчёты");
-    plot.setAxisTitle(QwtPlot::yLeft, "Температура (t)");
-    plot.resize(800, 600);
-
-    QwtPlotCurve curve;
-    curve.attach(&plot);
 
     QHBoxLayout *startContainer = new QHBoxLayout;
     QHBoxLayout *endContainer = new QHBoxLayout;
@@ -56,7 +50,19 @@ int main(int argc, char *argv[])
     endContainer->addWidget(endLabel);
     endContainer->addWidget(endDate);
 
+#ifndef _WIN32
+    QwtPlot plot;
+    plot.setTitle("Дневная температура");
+    plot.setAxisTitle(QwtPlot::xBottom, "Отсчёты");
+    plot.setAxisTitle(QwtPlot::yLeft, "Температура (t)");
+    plot.resize(800, 600);
+
+    QwtPlotCurve curve;
+    curve.attach(&plot);
+
     layout->addWidget(&plot);
+#endif
+
     layout->addLayout(startContainer);
     layout->addLayout(endContainer);
     
@@ -114,8 +120,10 @@ int main(int argc, char *argv[])
             y_new.push_back(json.array()[i].toDouble());
         }
 
+#ifndef _WIN32
         curve.setSamples(x_new.data(), y_new.data(), y_new.size());
         plot.replot();
+#endif
     });
     timer.start(1000);
 
